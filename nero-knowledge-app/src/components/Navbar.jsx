@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="navbar" ref={navRef}>
       <div className="nav-content">
         <Link to="/" className="nav-logo">
-          <Sparkles size={24} color="#06b6d4" />
+          <img src="/favicon.svg" alt="Nero KB Logo" width="28" height="28" />
           <span>Nero KB</span>
         </Link>
         <div className="nav-links">
