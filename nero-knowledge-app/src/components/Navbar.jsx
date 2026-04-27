@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="nav-content">
         <Link to="/" className="nav-logo">
           <Sparkles size={24} color="#06b6d4" />
-          <span>Stellar KB</span>
+          <span>Nero KB</span>
         </Link>
         <div className="nav-links">
           <Link to="/" className="nav-item" style={{display: 'flex', alignItems: 'center', gap: '6px'}}>

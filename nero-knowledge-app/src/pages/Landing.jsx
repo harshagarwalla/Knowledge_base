@@ -13,32 +13,46 @@ export default function Landing() {
   useGSAP(() => {
     const tl = gsap.timeline();
     
-    tl.from('.hero-title', { 
+    tl.fromTo('.hero-title', { 
       y: 100, 
       opacity: 0, 
+      rotationX: -45, 
+    }, {
+      y: 0,
+      opacity: 1,
+      rotationX: 0,
       duration: 1, 
       ease: "power4.out",
-      rotationX: -45, 
     })
-    .from('.hero-subtitle', {
+    .fromTo('.hero-subtitle', {
       y: 50,
       opacity: 0,
+    }, {
+      y: 0,
+      opacity: 1,
       duration: 0.8,
       ease: "power3.out"
     }, "-=0.5")
-    .from('.hero-cta', {
+    .fromTo('.hero-cta', {
       scale: 0.8,
       opacity: 0,
+    }, {
+      scale: 1,
+      opacity: 1,
       duration: 0.5,
       ease: "back.out(1.7)"
     }, "-=0.3")
-    .from('.feature-card', {
+    .fromTo('.feature-card', {
       y: 50,
       opacity: 0,
+      rotationY: 15,
+    }, {
+      y: 0,
+      opacity: 1,
+      rotationY: 0,
       duration: 0.8,
       stagger: 0.2,
       ease: "power2.out",
-      rotationY: 15,
     }, "-=0.2");
 
     const heroBox = document.querySelector('.hero-section');
@@ -76,7 +90,7 @@ export default function Landing() {
          </h1>
          
          <p className="hero-subtitle" style={{ fontSize: '1.2rem', color: 'var(--w3-text-muted)', maxWidth: '600px', margin: '0 auto 3rem' }}>
-           Curate, share, and govern knowledge entirely on-chain with Stellar Soroban smart contracts. Web3 native.
+           Curate, share, and govern knowledge entirely on-chain with Nero Chain EVM smart contracts. Web3 native.
          </p>
 
          <button className="btn-primary hero-cta" onClick={() => navigate('/app')} style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}>
@@ -89,13 +103,13 @@ export default function Landing() {
         <div className="glass-card feature-card">
           <Zap size={32} color="var(--w3-primary)" style={{ marginBottom: '1rem' }} />
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--w3-text-main)' }}>Lightning Fast</h3>
-          <p style={{ color: 'var(--w3-text-muted)', lineHeight: '1.5' }}>Built on Stellar, experience near-instant transaction finality for all your knowledge entries.</p>
+          <p style={{ color: 'var(--w3-text-muted)', lineHeight: '1.5' }}>Built on Nero Chain, experience near-instant transaction finality for all your knowledge entries.</p>
         </div>
 
         <div className="glass-card feature-card">
           <Box size={32} color="var(--w3-secondary)" style={{ marginBottom: '1rem' }} />
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--w3-text-main)' }}>Fully On-Chain</h3>
-          <p style={{ color: 'var(--w3-text-muted)', lineHeight: '1.5' }}>No centralized databases. Every edit, article, and vote is recorded immutably via Soroban.</p>
+          <p style={{ color: 'var(--w3-text-muted)', lineHeight: '1.5' }}>No centralized databases. Every edit, article, and vote is recorded immutably via EVM smart contracts.</p>
         </div>
 
         <div className="glass-card feature-card">

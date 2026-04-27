@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { checkConnection, createArticle, editArticle, upvoteArticle, markAnswer, archiveArticle, getArticle, listArticles, getArticleCount } from "../../lib/stellar.js";
+import { checkConnection, createArticle, editArticle, upvoteArticle, markAnswer, archiveArticle, getArticle, listArticles, getArticleCount } from "../lib/nerochain.js";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Wallet, PenTool, Edit3, Search, Activity, Archive, CheckCircle } from "lucide-react";
@@ -23,10 +23,10 @@ export default function KnowledgeBase() {
     const [form, setForm] = useState({
         id: "article1",
         author: "",
-        title: "Getting Started with Soroban",
-        content: "Soroban is a smart contracts platform...",
+        title: "Getting Started with Nero Chain",
+        content: "Nero Chain is an EVM-compatible smart contracts platform...",
         category: "tutorial",
-        tags: "soroban,stellar,rust",
+        tags: "evm,nerochain,solidity",
         editor: "",
         newContent: "",
         voter: "",
@@ -155,7 +155,7 @@ export default function KnowledgeBase() {
             <div className="kb-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                 <div>
                     <h1 style={{ fontSize: '2rem', background: 'linear-gradient(to right, #fff, var(--w3-text-muted))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Knowledge Base</h1>
-                    <p style={{ color: 'var(--w3-text-muted)' }}>Stellar Soroban Project 29</p>
+                    <p style={{ color: 'var(--w3-text-muted)' }}>Nero Chain Knowledge Base</p>
                 </div>
                 {connectedAddress && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--w3-glass)', padding: '0.5rem 1rem', borderRadius: '20px', border: '1px solid var(--w3-glass-border)' }}>
@@ -168,9 +168,9 @@ export default function KnowledgeBase() {
             <div className="glass-card kb-wallet-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', border: '1px solid rgba(6, 182, 212, 0.3)', boxShadow: '0 0 20px rgba(6, 182, 212, 0.1)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
                     <button className="btn-primary" onClick={onConnect} disabled={isBusy} style={{ padding: '0.85rem 1.5rem', fontSize: '1rem', boxShadow: '0 0 20px rgba(6, 182, 212, 0.4)' }}>
-                        <Wallet size={20} /> {loadingAction === "connect" ? "Connecting..." : "Connect Freighter"}
+                        <Wallet size={20} /> {loadingAction === "connect" ? "Connecting..." : "Connect MetaMask"}
                     </button>
-                    {!connectedAddress && <span style={{ color: 'var(--w3-text-main)', fontSize: '0.95rem', fontWeight: 500 }}>Please connect your Freighter wallet to interact securely.</span>}
+                    {!connectedAddress && <span style={{ color: 'var(--w3-text-main)', fontSize: '0.95rem', fontWeight: 500 }}>Please connect your MetaMask wallet to interact securely.</span>}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--w3-text-muted)', fontSize: '0.9rem' }}>
                     <Activity size={18} color="var(--w3-primary)" /> Articles: <strong style={{ color: '#fff' }}>{countValue}</strong>
@@ -207,7 +207,7 @@ export default function KnowledgeBase() {
                             </div>
                             <div className="field">
                                 <label>Author Address</label>
-                                <input name="author" value={form.author} onChange={setField} placeholder="G..." />
+                                <input name="author" value={form.author} onChange={setField} placeholder="0x..." />
                             </div>
                             <div className="field" style={{ gridColumn: '1 / -1' }}>
                                 <label>Title</label>
@@ -239,11 +239,11 @@ export default function KnowledgeBase() {
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                 <div className="field">
                                     <label>Editor Address</label>
-                                    <input name="editor" value={form.editor} onChange={setField} placeholder="G..." />
+                                    <input name="editor" value={form.editor} onChange={setField} placeholder="0x..." />
                                 </div>
                                 <div className="field">
                                     <label>Voter Address</label>
-                                    <input name="voter" value={form.voter} onChange={setField} placeholder="G..." />
+                                    <input name="voter" value={form.voter} onChange={setField} placeholder="0x..." />
                                 </div>
                                 <div className="field" style={{ gridColumn: '1 / -1' }}>
                                     <label>New Content</label>

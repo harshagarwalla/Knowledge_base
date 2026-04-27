@@ -1,14 +1,14 @@
 <div align="center">
-  <img src="./logo.png" alt="Stellar KB Logo" width="200" style="border-radius:20px; box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);"/>
+  <img src="./logo.png" alt="Nero Chain KB Logo" width="200" style="border-radius:20px; box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);"/>
   <br/><br/>
   
-  # Stellar Knowledge Base 🌌
+  # Nero Chain Knowledge Base 🌌
   **Decentralized, Immutable, Community Governed On-Chain Knowledge.**
 
-  [![Built with Stellar](https://img.shields.io/badge/Built_with-Stellar_Soroban-black?style=flat&logo=stellar)](https://stellar.org/soroban)
+  [![Built with Nero](https://img.shields.io/badge/Built_with-Nero_Chain-black?style=flat)](https://nerochain.io/)
+  [![Solidity](https://img.shields.io/badge/Solidity-%23363636.svg?style=flat&logo=solidity&logoColor=white)](https://soliditylang.org/)
   [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
   [![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-  [![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat&logo=greensock&logoColor=white)](https://greensock.com/)
 
 </div>
 
@@ -18,19 +18,17 @@
 
 Watch the application in action with our custom 3D Web3 user interface:
 
-![Stellar KB Demo Walkthrough](./demo.webp)
+![Nero KB Demo Walkthrough](./demo.webp)
 
 *(Click to view, or download `demo.webp` to view the full recorded interaction flow).*
 
 ## 🌟 Overview
 
-The **Stellar Knowledge Base** is a next-generation decentralized application (dApp) built on the **Stellar Soroban** smart contract platform. It acts as an immutable wiki where community members can create, curate, and govern informative articles, tutorials, and documentation entirely on-chain. 
+The **Nero Chain Knowledge Base** is a next-generation decentralized application (dApp) built on the **Nero Chain EVM**. It acts as an immutable wiki where community members can create, curate, and govern informative articles, tutorials, and documentation entirely on-chain. 
 
-Unlike traditional databases, every entry, edit, and upvote is securely cryptographically finalized on the Stellar network, ensuring 100% transparency and resistance to censorship.
+Unlike traditional databases, every entry, edit, and upvote is securely cryptographically finalized on the Nero network, ensuring 100% transparency and resistance to censorship.
 
 ## 🏗️ System Architecture
-
-<img src="./my-stellar-app/src/assets/diagram-export-7-4-2026-1_36_00-am.png" height="700px" width="90%" display="flex" align-items="center" justify-content="center">
 
 The project architecture is bifurcated into a high-performance modern Web3 frontend and a secure smart-contract-driven backend.
 
@@ -43,17 +41,16 @@ The project architecture is bifurcated into a high-performance modern Web3 front
   - Clean vector iconography implemented natively via `lucide-react`.
 
 ### 2. State & Blockchain Interaction Layer
-- **Wallet Connection:** Real-time seamless Freighter extension connection bridging the user matrix to the Soroban testnet (`@stellar/freighter-api`).
-- **Data Execution:** Utilizing `@stellar/stellar-sdk` to structure the binary `xdr` encoded transactions.
-- **RPC Invocation**: Data reading occurs completely gas-free via `simulateTransaction` while mutative writes are successfully signed by Freighter and propagated using `sendTransaction` endpoints pointing to `https://soroban-testnet.stellar.org`.
+- **Wallet Connection:** Real-time seamless MetaMask (EVM) connection.
+- **Data Execution:** Utilizing `ethers.js` to construct and sign transactions.
+- **RPC Invocation**: Data reading and mutative writes are propagated using endpoints pointing to `https://rpc-testnet.nerochain.io`.
 
 ### 3. Smart Contract Backend 
-*Contract Hash:* `CDHZYEFKNTGBUOUSCJS2T7JASGHPCZIC2Y37BOWD537NSFLXLQQSLFJT`
-Written natively in Rust for the Soroban WASM runtime, the backend implements the following structural logic points:
-- `create_article`: Initializes standard payload struct (Title, Content, Author).
-- `edit_article`: Facilitates mutable modifications tracked securely bounding the payload footprint.
-- `upvote_article` & `mark_answer`: Enables decentralized community governance of information relevance.
-- `list_articles` & `get_article`: High-efficiency read functions querying the Ledger entries directly.
+Written natively in Solidity (`KnowledgeBase.sol`), the backend implements the following structural logic points:
+- `createArticle`: Initializes standard payload struct (Title, Content, Author).
+- `editArticle`: Facilitates mutable modifications tracked securely bounding the payload footprint.
+- `upvoteArticle` & `markAnswer`: Enables decentralized community governance of information relevance.
+- `listArticles` & `getArticle`: High-efficiency read functions querying the contract directly.
 
 ---
 
@@ -63,23 +60,32 @@ To operate this project or run your own instance locally:
 
 ### Prerequisites
 1. **Node.js** (v18+)
-2. **Freighter Wallet Extension** mapped to the Stellar Testnet.
+2. **MetaMask Wallet Extension** configured for the Nero Chain Testnet (RPC: `https://rpc-testnet.nerochain.io`, Chain ID: `689`).
 
 ### Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/pratyush06-aec/knowledge-base.git
-cd knowledge-base/my-stellar-app
+cd knowledge-base/nero-knowledge-app
 
 # Install package dependencies
 npm install
+
+# Compile the Smart Contract
+npx hardhat compile
+
+# Deploy the Smart Contract to Nero Chain Testnet
+npx hardhat run scripts/deploy.js --network neroTestnet
+
+# Note the deployed contract address and update it in src/lib/nerochain.js 
+# (const CONTRACT_ADDRESS = "YOUR_ADDRESS")
 
 # Run the local development server locally
 npm run dev
 ```
 
-Navigate to `http://localhost:5173` to explore the Stellar Knowledge Experience!
+Navigate to `http://localhost:5173` to explore the Nero Chain Knowledge Experience!
 
 ## 🔐 Contact & Contributions
-Feel free to open Issues or Pull Requests on the github if you have an idea to refine the Stellar architecture!
+Feel free to open Issues or Pull Requests on the github if you have an idea to refine the EVM architecture!

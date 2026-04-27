@@ -1,5 +1,5 @@
 {
-  "name": "demo1",
+  "name": "nero-knowledge-base",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@stellar/freighter-api": "^6.0.1",
-    "@stellar/stellar-sdk": "^14.6.1",
+    "ethers": "^6.13.0",
     "gsap": "^3.14.2",
     "lucide-react": "^1.7.0",
     "react": "^19.2.4",
@@ -28,6 +27,8 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
-    "vite": "^8.0.1"
+    "vite": "^8.0.1",
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
   }
 }
