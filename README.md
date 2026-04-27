@@ -14,13 +14,6 @@
 
 <hr/>
 
-## 🎬 Project Walkthrough
-
-Watch the application in action with our custom 3D Web3 user interface:
-
-![Nero KB Demo Walkthrough](./demo.webp)
-
-*(Click to view, or download `demo.webp` to view the full recorded interaction flow).*
 
 ## 🌟 Overview
 
